@@ -1,6 +1,7 @@
 class Solution {
     public void rotate(int[][] matrix) {
         int n = matrix.length;
+        // transposing the matrix
         for(int i = 0;i < n;i++){
             for(int j = i + 1; j < n; j++){
                 int temp = matrix[i][j];
@@ -9,6 +10,9 @@ class Solution {
                   
             }
         } 
+        // reversing each row to get the rotate image
+        // diagonals are same after transpose
+        // daigonals direction changes as the image is rotated
         for(int i = 0;i < n;i++){
            int left = 0;
            int right =n-1;
