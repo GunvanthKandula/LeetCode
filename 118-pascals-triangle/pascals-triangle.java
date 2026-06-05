@@ -2,10 +2,7 @@ class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> ans = new ArrayList<>();
      for(int row = 1; row <= numRows; row++){
-        List<Integer> arr = new ArrayList<>();
-             arr = getRow(row);
-             ans.add(arr);
-
+             ans.add(getRow(row));
         }
         return ans;
     }
