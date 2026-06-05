@@ -1,25 +1,22 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> ans = new ArrayList<>();
-
-
      for(int row = 1; row <= numRows; row++){
-           List<Integer> temp = new ArrayList<>();
-            for(int col = 1; col <= row ;col++){
-                temp.add(NcR(row,col));
-            }
-            ans.add(temp);
+        List<Integer> arr = new ArrayList<>();
+             arr = getRow(row);
+             ans.add(arr);
+
         }
         return ans;
     }
-    public int NcR(int n, int c){
-         n = n-1;
-         c = c-1;
-        long result = 1;
-        for(int i = 0;i < c; i++){
-            result = result * (n-i);
-            result = result/(i +1);
+    public List<Integer> getRow(int n){
+        List<Integer> temp = new ArrayList<>();
+        int result = 1;
+        temp.add(result);
+        for(int i = 1; i < n; i++){
+            result = result * (n - i)/i;
+            temp.add(result);
         }
-        return (int) result;
+        return temp;
     }
 }
