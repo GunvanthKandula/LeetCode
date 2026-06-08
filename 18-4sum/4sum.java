@@ -1,19 +1,33 @@
 class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         int n = nums.length;
+        Arrays.sort(nums);
         Set<List<Integer>> ans = new HashSet<>();
-        
         for(int i = 0;i<n;i++){
             for(int j = i+1;j<n;j++){
-                Set<Long> st = new HashSet<>();
-                for(int k = j+1;k<n;k++){
-                    long fourth = (long)target-nums[i] - nums[j] - nums[k];
-                    if(st.contains(fourth)){
-                        List<Integer> temp = Arrays.asList(nums[i],nums[j],nums[k],(int)fourth);
+                int low = j+1;
+                int high = n-1;
+                while(low<high){
+                    long sum = (long) nums[i]+nums[j]+nums[low]+nums[high];
+                    if(sum < target){
+                        low++;
+                    }
+                    else if(sum > target){
+                        high--;
+                    }
+                    else{
+                        List<Integer> temp =Arrays.asList(nums[i],nums[j],nums[low],nums[high]);
                         Collections.sort(temp);
                         ans.add(temp);
+                        low++;
+                        high--;
+                        while(low < high && nums[low]== nums[low -1]){
+                            low++;
+                        }
+                        while(low < high && nums[high]== nums[high+1]){
+                            high--;
+                        }
                     }
-                    st.add((long)nums[k]);
                 }
             }
         }
