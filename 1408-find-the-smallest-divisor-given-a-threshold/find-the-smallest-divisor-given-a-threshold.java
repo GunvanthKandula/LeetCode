@@ -1,7 +1,5 @@
 class Solution {
     public int smallestDivisor(int[] nums, int threshold) {
-        int n = nums.length;
-        int min = 1;
         int maxii = max(nums);
         int ans = 0;
         int low = 1;
